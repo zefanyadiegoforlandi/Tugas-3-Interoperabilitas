@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Pasien</title>
+    <!-- Add link to CDN Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-50 p-8">
+    <div class="max-w-3xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-blue-600 text-center">Detail Pasien</h1>
+        <!-- Card -->
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+            <!-- Content -->
+            <div class="md:flex">
+                <div class="p-8">
+                    <div class="flex justify-between mb-4">
+                        <h2 class="text-3xl text-gray-800 font-bold">{{ patient.name }}</h2>
+                    </div>
+                    <p class="text-xl text-gray-700 mb-2"><strong>Usia:</strong> {{ patient.age }}</p>
+                    <p class="text-xl text-gray-700 mb-2"><strong>Tekanan Darah:</strong> {{ patient.blood_pressure }}</p>
+                    <p class="text-xl text-gray-700 mb-2"><strong>Penyakit:</strong> {{ patient.disease }}</p>
+                    <p class="text-xl text-gray-700 mb-2"><strong>Obat:</strong> {{ patient.medication }}</p>
+                    <p class="text-xl text-gray-700 mb-2"><strong>Dokter:</strong> {{ patient.doctor }}</p>
+                    <p class="text-xl text-gray-700 mb-2"><strong>Alamat:</strong> {{ patient.address }}</p>
+                </div>
+            </div>
+            <!-- Button -->
+            <div class="flex justify-end items-center px-8 py-4 bg-gray-100">
+                <a href="/datapasien" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Kembali</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

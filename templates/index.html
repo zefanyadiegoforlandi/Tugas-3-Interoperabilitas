@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Data API</title>
+    <!-- Add link to CDN Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-50 p-8">
+    <div class="max-w-3xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-blue-600 text-center">Health Data API</h1>
+        <p class="mb-6 text-lg text-gray-800 text-center">Berikut adalah data yang diperoleh dari Health Data API:</p>
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto">
+                <thead class="bg-blue-100 text-gray-700">
+                    <tr>
+                        <th class="px-4 py-2">Nama</th>
+                        <th class="px-4 py-2">Usia</th>
+                        <th class="px-4 py-2">Penyakit</th>
+                        <th class="px-4 py-2">Detail</th>
+                    </tr>
+                </thead>
+                <tbody id="healthData" class="text-gray-600">
+                    <!-- Data dari API akan dimasukkan di sini -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add script to fetch data from the API and populate the table -->
+    <script>
+        fetch('/healthdata')
+            .then(response => response.json())
+            .then(data => {
+                const healthData = document.getElementById('healthData');
+                data.forEach(patient => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="border px-4 py-2 text-center">${patient.name}</td>
+                        <td class="border px-4 py-2 text-center">${patient.age}</td>
+                        <td class="border px-4 py-2 text-center">${patient.disease}</td>
+                        <td class="border px-4 py-2 text-center">
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="redirectToDetail('${patient.name}')">Detail</button>
+                        </td>
+                    `;
+                    healthData.appendChild(row);
+                });
+            });
+
+        function redirectToDetail(name) {
+            window.location.href = `/detail_pasien.html?name=${name}`;
+        }
+    </script>
+</body>
+</html>
